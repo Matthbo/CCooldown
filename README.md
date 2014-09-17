@@ -10,4 +10,4 @@ What if you can't read chat because everyone is talking to eachother? Isn't that
 - Individual player cooldown
 
 
-###More info about this plugin later (may come out for mc 1.8, if craftbukkit is avaible...)
+####More info about this plugin later (may come out for mc 1.8, if craftbukkit is avaible...)
