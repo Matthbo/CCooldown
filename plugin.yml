@@ -1,0 +1,7 @@
+name: ChatCooldown
+main: matthbo.plugin.chatcooldown.ChatCooldown
+version: 1.0
+commands:
+    ccooldown:
+        description: ChatCooldown Commands
+        usage: /<command> enable | /<command> disable
