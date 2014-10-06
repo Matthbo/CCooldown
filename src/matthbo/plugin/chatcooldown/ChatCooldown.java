@@ -22,7 +22,7 @@ public class ChatCooldown extends JavaPlugin{
 	public void onEnable(){
 		instance = this;
 		
-		config.loadCfg();
+		config.preInitCfg();
 		
 		getLogger().info("ChatCooldown has been Activated");
 	}
@@ -50,8 +50,8 @@ public class ChatCooldown extends JavaPlugin{
 					return true;
 				}
 				else if(args[0].equalsIgnoreCase("reload")){
-					reloadConfig();
-					return true; //edit
+					config.reload();
+					return true;
 				}
 			}else{
 				if(config.isOn){sender.sendMessage(pluginMSG + "ChatCooldown is Enabled!"); return true;}

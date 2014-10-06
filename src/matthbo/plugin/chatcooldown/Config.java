@@ -8,12 +8,22 @@ public class Config {
 	
 	public String isOn_LANG = "general.isOn";
 	
-	public void loadCfg(){
+	public void preInitCfg(){
 		cc = ChatCooldown.instance;
 		cc.saveDefaultConfig();
 		
+		InitCfg();
+	}
+	
+	public void InitCfg(){
 		//general
 		isOn = cc.getConfig().getBoolean(isOn_LANG);
+	}
+	
+	public void reload(){
+		cc.reloadConfig();
+		
+		InitCfg();
 	}
 	
 	public void set(String path, Object value){
