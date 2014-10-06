@@ -1,3 +1,8 @@
 # General
 general:
   isOn: true
+  autoOn: false
+
+# DO NOT CHANGE!!!
+doNotChange:
+  cfgVersion: 0.1

@@ -1,6 +1,6 @@
 name: ChatCooldown
 main: matthbo.plugin.chatcooldown.ChatCooldown
-version: 1.0
+version: 0.1.1
 commands:
     ccooldown:
         description: ChatCooldown Commands
