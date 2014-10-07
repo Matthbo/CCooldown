@@ -4,6 +4,7 @@ import org.bukkit.ChatColor;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
 import org.bukkit.plugin.Plugin;
+import org.bukkit.plugin.PluginManager;
 import org.bukkit.plugin.java.JavaPlugin;
 
 public class ChatCooldown extends JavaPlugin{
@@ -20,9 +21,12 @@ public class ChatCooldown extends JavaPlugin{
 	}
 	
 	public void onEnable(){
+		PluginManager pw = getServer().getPluginManager();
 		instance = this;
 		
 		config.InitCfg();
+		
+		pw.registerEvents(new PluginEventHandler(), this);
 		
 		getLogger().info("ChatCooldown has been Activated");
 	}

@@ -24,7 +24,7 @@ public class Config {
 		cfgVersion = cc.getConfig().getString(cfgVersion_LANG);
 		
 		//checks if config is uptodate
-		if(cfgVersion != cfgNeededVersion){
+		if(!cfgVersion.equalsIgnoreCase(cfgNeededVersion)){
 			try{
 			File dataFolder = cc.getDataFolder();
 			File cfgFile = new File(dataFolder, "config.yml");
@@ -36,6 +36,9 @@ public class Config {
 			cc.getLogger().warning("Old Configs Are Saved In 'config_old.yml'!");
 			}catch(Exception e) {e.printStackTrace();}
 		}
+		
+		//cc.getLogger().info("---" + cfgVersion + "---");
+		//cc.getLogger().info("---" + cfgNeededVersion + "---");
 		
 		//general
 		isOn = cc.getConfig().getBoolean(isOn_LANG);
