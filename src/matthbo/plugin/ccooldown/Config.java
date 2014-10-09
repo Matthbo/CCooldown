@@ -1,24 +1,28 @@
-package matthbo.plugin.chatcooldown;
+package matthbo.plugin.ccooldown;
 
 import java.io.File;
 
 public class Config {
 	
-	public ChatCooldown cc = ChatCooldown.instance;
+	public CCooldown cc = CCooldown.instance;
 	
 	public boolean isOn = true;
 	public boolean autoOn = false;
+	public int time = 20;
+	public String message = "You send the message to quickly!";
 	
-	private String cfgVersion = "0";
-	private String cfgNeededVersion = "0.1";
+	private String cfgVersion = "VERSION NOT FOUND!";
+	private String cfgNeededVersion = "1.0";
 	
 	public String isOn_LANG = "general.isOn";
 	public String autoOn_LANG = "general.autoOn";
+	public String time_LANG = "slowmode.time";
+	public String message_LANG = "slowmode.message";
 	
 	private String cfgVersion_LANG = "doNotChange.cfgVersion";
 	
 	public void InitCfg(){
-		cc = ChatCooldown.instance;
+		cc = CCooldown.instance;
 		cc.saveDefaultConfig();
 		
 		cfgVersion = cc.getConfig().getString(cfgVersion_LANG);
@@ -44,6 +48,9 @@ public class Config {
 		isOn = cc.getConfig().getBoolean(isOn_LANG);
 		autoOn = cc.getConfig().getBoolean(autoOn_LANG);
 		
+		//slowmode
+		time = cc.getConfig().getInt(time_LANG);
+		message = cc.getConfig().getString(message_LANG);
 	}
 	
 	public void reload(){

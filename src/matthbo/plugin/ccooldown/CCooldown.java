@@ -1,21 +1,26 @@
-package matthbo.plugin.chatcooldown;
+package matthbo.plugin.ccooldown;
 
 import org.bukkit.ChatColor;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
+import org.bukkit.entity.Player;
 import org.bukkit.plugin.Plugin;
 import org.bukkit.plugin.PluginManager;
 import org.bukkit.plugin.java.JavaPlugin;
 
-public class ChatCooldown extends JavaPlugin{
+public class CCooldown extends JavaPlugin{
 	
 	public Config config = new Config();
 	
-	public static ChatCooldown instance;
+	public static CCooldown instance;
 	
-	public static final Object pluginMSG = ChatColor.DARK_PURPLE + "[ChatCooldown] " + ChatColor.RESET;
+	public static final Object pluginMSG = ChatColor.DARK_PURPLE + "[CCooldown] " + ChatColor.RESET;
 	public static final Object pluginUsage = pluginMSG + "" + ChatColor.DARK_RED;
 	
+	
+	/**
+	 * used for addons
+	 */
 	public static Plugin getPlugin(){
 		return instance;
 	}
@@ -28,22 +33,22 @@ public class ChatCooldown extends JavaPlugin{
 		
 		pw.registerEvents(new PluginEventHandler(), this);
 		
-		getLogger().info("ChatCooldown has been Activated");
+		getLogger().info("CCooldown has been Activated");
 	}
 	
 	public void onDisable(){
-		getLogger().info("ChatCooldown has been Disabled!");
+		getLogger().info("CCooldown has been Disabled!");
 	}
 	
 	public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args){
-		if(cmd.getName().equalsIgnoreCase("ccooldown")){
+		if(cmd.getName().equalsIgnoreCase("ccooldown") && sender.hasPermission(PermissionList.admin)){
 			if(args.length > 0){
 				if(args.length == 1 && args[0].equalsIgnoreCase("disable")){
 					if(!config.isOn){sender.sendMessage(pluginMSG + "ChatCooldown is already Disabled!"); return true;}
 					config.isOn = false;
 					config.set(config.isOn_LANG, false);
 					sender.sendMessage(pluginMSG + "ChatCooldown is Disabled!");
-					
+					messageToAll(sender, ChatColor.GOLD +"SlowMode is off!");
 					return true;
 				}
 				else if(args.length == 1 && args[0].equalsIgnoreCase("enable")){
@@ -51,6 +56,7 @@ public class ChatCooldown extends JavaPlugin{
 					config.isOn = true;
 					config.set(config.isOn_LANG, true);
 					sender.sendMessage(pluginMSG + "ChatCooldown is Enabled!");
+					messageToAll(sender, ChatColor.GOLD +"SlowMode is on!");
 					return true;
 				}
 				else if(args.length == 1 && args[0].equalsIgnoreCase("reload")){
@@ -87,6 +93,17 @@ public class ChatCooldown extends JavaPlugin{
 			}
 		}
 		return false;
+	}
+	
+	public void messageToAll(CommandSender sender, String msg){
+		Player[] allPlayers = sender.getServer().getOnlinePlayers();
+		
+		for(int j = 0; j < allPlayers.length; j++){
+        	Player target = allPlayers[j];
+        	target.sendMessage(pluginMSG + msg);
+        	this.getLogger().info(msg);
+        }
+		
 	}
 	
 }

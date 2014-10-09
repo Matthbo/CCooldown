@@ -1,8 +1,12 @@
-# General
 general:
   isOn: true
   autoOn: false
 
+slowmode:
+# time in seconds
+  time: 20
+  message: You send the message to quickly!
+
 # DO NOT CHANGE!!!
 doNotChange:
-  cfgVersion: 0.1
+  cfgVersion: 1.0
