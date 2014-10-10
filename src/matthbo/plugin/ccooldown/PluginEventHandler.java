@@ -11,9 +11,11 @@ import org.bukkit.event.player.AsyncPlayerChatEvent;
 
 public class PluginEventHandler implements Listener {
 	
-	private CCManager manager =  new CCManager();
-	
+	private CCManager manager = new CCManager();
+	private CCAutoOn autoOn = new CCAutoOn();
 	private Config config = CCooldown.instance.config;
+	
+	private long time = System.currentTimeMillis();
 	
 	@EventHandler(priority=EventPriority.HIGHEST)
 	public void onPlayerChat(AsyncPlayerChatEvent event){
@@ -28,7 +30,18 @@ public class PluginEventHandler implements Listener {
 			}else{
 				this.manager.add(new Cooldown(id, manager.getCooldownTime(),System.currentTimeMillis()));
 			}
+			
 		}
+		
+		if(config.autoOn){
+			autoOn.addMSG(event.getMessage());
+			
+			if(System.currentTimeMillis() >= time + autoOn.checkTime){
+				autoOn.check(player);
+				time = System.currentTimeMillis();
+			}
+		}
+		
 	}
 	
 	private boolean bypass(Player player){

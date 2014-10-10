@@ -22,6 +22,7 @@ public class Cooldown {
 		return System.currentTimeMillis() >= this.time + this.length;
 	}
 
+	//not used, please tell me if needed!
 	/*public long getTimeRemaining() {
 		return this.time + this.length - System.currentTimeMillis();
 	}*/

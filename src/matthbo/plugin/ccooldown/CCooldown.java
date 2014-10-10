@@ -19,7 +19,7 @@ public class CCooldown extends JavaPlugin{
 	
 	
 	/**
-	 * used for addons
+	 * Used for addons
 	 */
 	public static Plugin getPlugin(){
 		return instance;
@@ -92,7 +92,7 @@ public class CCooldown extends JavaPlugin{
 				return true;
 			}
 		}
-		return false;
+		return true;
 	}
 	
 	public void messageToAll(CommandSender sender, String msg){
