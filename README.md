@@ -13,7 +13,7 @@ What if you can't read chat because everyone is talking to eachother? Isn't that
 
 ## Permissions:
 
-- ccooldown.admin
+- ccooldown.admin |
   This permission can bypass slowmode and use the commands
-- ccooldown.bypass
+- ccooldown.bypass |
   This permission is bypass only
