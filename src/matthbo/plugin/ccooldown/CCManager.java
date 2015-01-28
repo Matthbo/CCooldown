@@ -9,7 +9,7 @@ public class CCManager {
 	public Config config = CCooldown.instance.config;
 	
 	private final int cooldownTime = config.time * 1000;
-	private final Map<UUID, Cooldown> cooldowns = new HashMap<>();
+	private final Map<UUID, Cooldown> cooldowns = new HashMap<UUID, Cooldown>();
 
 	public void add(Cooldown cooldown){
 		UUID player = cooldown.getPlayer();

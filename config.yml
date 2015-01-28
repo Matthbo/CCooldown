@@ -1,13 +1,16 @@
 general:
   isOn: true
+
 slowmode:
   # time in seconds
   time: 20
   message: You send the message to quickly!
+
 auto:
   autoOn: false
   # the amount of messages needed to turn auto on
   messages: 10
-# DO NOT CHANGE!!!
+
 doNotChange:
+  # DO NOT CHANGE!!!
   cfgVersion: 1.1
